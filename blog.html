@@ -21,11 +21,14 @@ a:hover{color:#1F2937}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #3B82F6;outline-offset:2px}
 h1,h2,h3,p{margin:0}
 input,textarea,button{font-family:inherit}
+@supports (overflow:clip){[data-pagina]{overflow:clip!important}}
 </style>
 </helmet>
-<div style="position:relative;overflow:hidden;min-height:100vh;background:#F0F9FF">
-  <div aria-hidden="true" style="position:absolute;top:-200px;right:-200px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.26),rgba(96,165,250,0) 70%);pointer-events:none"></div>
-  <div aria-hidden="true" style="position:absolute;top:900px;left:-260px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.18),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+<div data-pagina style="position:relative;overflow:hidden;min-height:100vh;background:#F0F9FF">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+    <div style="position:absolute;top:-200px;right:-200px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.26),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+    <div style="position:absolute;top:900px;left:-260px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.18),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+  </div>
 
   <header style="position:sticky;top:0;z-index:20;padding:16px clamp(16px,4vw,48px)">
     <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 10px 10px 26px;background:rgba(255,255,255,0.66);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.9);border-radius:999px;box-shadow:0 8px 32px rgba(59,130,246,0.08)">

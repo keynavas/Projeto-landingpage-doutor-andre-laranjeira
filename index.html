@@ -20,11 +20,14 @@ a{color:#3B82F6;text-decoration:none}
 a:hover{color:#1F2937}
 a:focus-visible,button:focus-visible,iframe:focus-visible{outline:3px solid #3B82F6;outline-offset:3px;border-radius:12px}
 h1,h2,h3,p,ol,ul{margin:0}
+@supports (overflow:clip){[data-pagina],[data-recorte]{overflow:clip!important}}
 </style>
 </helmet>
-<div style="position:relative;overflow:hidden;min-height:100vh;background:#F0F9FF">
-  <div aria-hidden="true" style="position:absolute;top:1100px;left:-260px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.22),rgba(96,165,250,0) 70%);pointer-events:none"></div>
-  <div aria-hidden="true" style="position:absolute;top:2600px;right:-260px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.2),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+<div data-pagina style="position:relative;overflow:hidden;min-height:100vh;background:#F0F9FF">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+    <div style="position:absolute;top:1100px;left:-260px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.22),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+    <div style="position:absolute;top:2600px;right:-260px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.2),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+  </div>
 
   <header style="position:sticky;top:0;z-index:20;padding:16px clamp(16px,4vw,48px)">
     <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 10px 10px 26px;background:rgba(255,255,255,0.66);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.9);border-radius:999px;box-shadow:0 8px 32px rgba(59,130,246,0.08)">
@@ -209,7 +212,7 @@ h1,h2,h3,p,ol,ul{margin:0}
     </section>
 
     <section aria-labelledby="cta-title" style="padding:clamp(96px,11vw,160px) clamp(16px,4vw,48px)">
-      <div style="max-width:1240px;margin:0 auto;position:relative;overflow:hidden;border-radius:44px;padding:clamp(64px,8vw,120px) clamp(28px,5vw,80px);background:#3B82F6;color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center;gap:40px">
+      <div data-recorte style="max-width:1240px;margin:0 auto;position:relative;overflow:hidden;border-radius:44px;padding:clamp(64px,8vw,120px) clamp(28px,5vw,80px);background:#3B82F6;color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center;gap:40px">
         <div aria-hidden="true" style="position:absolute;top:-200px;right:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.22),rgba(255,255,255,0) 70%)"></div>
         <h2 id="cta-title" style="position:relative;font-family:'Newsreader',serif;font-weight:400;font-size:clamp(36px,4.6vw,62px);line-height:1.1;letter-spacing:-0.02em;max-width:800px;text-wrap:balance">O cuidado com seu filho começa com acompanhamento de confiança.</h2>
         <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px">
