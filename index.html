@@ -39,8 +39,32 @@ h1,h2,h3,p,ol,ul{margin:0}
           </sc-for>
         </nav>
       </sc-if>
-      <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:46px;padding:0 24px;border-radius:999px;background:#3B82F6;color:#fff;font-size:16px;font-weight:600;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s" style-hover="transform:scale(1.05);box-shadow:0 10px 26px rgba(59,130,246,0.35);color:#fff">Agendar consulta</a>
+      <div style="flex:none;display:flex;align-items:center;gap:8px">
+        <sc-if value="{{ showHeaderCta }}" hint-placeholder-val="{{ true }}">
+          <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:46px;padding:0 24px;border-radius:999px;background:#3B82F6;color:#fff;font-size:16px;font-weight:600;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s" style-hover="transform:scale(1.05);box-shadow:0 10px 26px rgba(59,130,246,0.35);color:#fff">Agendar consulta</a>
+        </sc-if>
+        <sc-if value="{{ showBurger }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuExpanded }}" aria-controls="menu-celular" aria-label="{{ menuLabel }}" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:1px solid rgba(96,165,250,0.35);border-radius:50%;background:#fff;color:#1F2937;cursor:pointer;transition:background .3s" style-hover="background:rgba(96,165,250,0.14)">
+            <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </sc-if>
+            <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            </sc-if>
+          </button>
+        </sc-if>
+      </div>
     </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav id="menu-celular" aria-label="Menu" style="max-width:1240px;margin:10px auto 0;padding:10px;display:flex;flex-direction:column;gap:2px;background:rgba(255,255,255,0.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.9);border-radius:28px;box-shadow:0 16px 40px rgba(59,130,246,0.14)">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+          <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:52px;padding:0 18px;border-radius:18px;font-size:17px;font-weight:500;color:#1F2937;transition:background .3s" style-hover="background:rgba(96,165,250,0.14);color:#1F2937">{{ item.label }}</a>
+        </sc-for>
+        <sc-if value="{{ ctaInMenu }}" hint-placeholder-val="{{ true }}">
+          <a href="{{ wa }}" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="margin-top:8px;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:#3B82F6;color:#fff;font-size:17px;font-weight:600" style-hover="color:#fff">Agendar consulta</a>
+        </sc-if>
+      </nav>
+    </sc-if>
   </header>
 
   <main>
@@ -226,23 +250,32 @@ h1,h2,h3,p,ol,ul{margin:0}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;floatingWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Mobile&quot;}}">
 class Component extends DCLogic {
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, y: 0 };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, y: 0, menu: false };
   componentDidMount() {
     this.onR = () => this.setState({ w: window.innerWidth });
     this.onS = () => this.setState({ y: window.scrollY });
+    this.onK = e => { if (e.key === 'Escape') this.setState({ menu: false }); };
     window.addEventListener('resize', this.onR);
     window.addEventListener('scroll', this.onS, { passive: true });
+    window.addEventListener('keydown', this.onK);
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.onR);
     window.removeEventListener('scroll', this.onS);
+    window.removeEventListener('keydown', this.onK);
   }
   renderVals() {
     const w = this.state.w;
+    const menuOpen = this.state.menu && w < 1080;
     return {
       wa: 'https://wa.me/5511947450720',
       maps: 'https://www.google.com/maps/search/?api=1&query=Rua+Nestor+de+Barros,+116,+Tatuap%C3%A9,+S%C3%A3o+Paulo+SP',
       showNav: w >= 1080,
+      showBurger: w < 1080, showHeaderCta: w >= 640, ctaInMenu: w < 640,
+      menuOpen, menuClosed: !menuOpen, menuExpanded: menuOpen ? 'true' : 'false',
+      menuLabel: menuOpen ? 'Fechar menu' : 'Abrir menu',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
       heroWide: w >= 1080, heroNarrow: w < 1080,
       showFloat: w < 900 && (this.props.floatingWhatsApp ?? true) && this.state.y > 500,
       nav: [
