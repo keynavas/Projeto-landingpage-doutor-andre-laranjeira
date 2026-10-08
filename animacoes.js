@@ -21,18 +21,25 @@
     'main > div > *',
     'main article',
     'footer > div > *',
-    'footer > div > div:first-child > *'
+    'footer > div > div:first-child > *',
+    '[data-anima]'
   ];
   const DESLOCAMENTO = 48;
+  const DESLOCAMENTO_LATERAL = 64;
 
   const registrados = new WeakSet();
   const visiveis = new WeakSet();
   let lote = [];
   let loteAgendado = false;
 
-  function quadro(y, opacidade) {
+  // Elementos com data-lado="esquerda|direita" entram e saem pelo lado;
+  // os demais, por cima ou por baixo conforme o sentido da rolagem.
+  function quadro(el, sentido, opacidade) {
     const q = { opacity: opacidade };
-    if (temTranslate) q.translate = `0 ${y}px`;
+    if (!temTranslate) return q;
+    const lado = el.dataset.lado;
+    if (lado && sentido) q.translate = `${lado === 'esquerda' ? -DESLOCAMENTO_LATERAL : DESLOCAMENTO_LATERAL}px 0`;
+    else q.translate = `0 ${sentido * DESLOCAMENTO}px`;
     return q;
   }
 
@@ -43,14 +50,12 @@
 
   function entrar(el, vindoDeCima, atraso) {
     visiveis.add(el);
-    const y = vindoDeCima ? -DESLOCAMENTO : DESLOCAMENTO;
-    animar(el, quadro(y, 0), quadro(0, 1), 900, atraso);
+    animar(el, quadro(el, vindoDeCima ? -1 : 1, 0), quadro(el, 0, 1), 900, atraso);
   }
 
   function sair(el, saiuPorCima) {
     visiveis.delete(el);
-    const y = saiuPorCima ? -DESLOCAMENTO : DESLOCAMENTO;
-    animar(el, quadro(0, 1), quadro(y, 0), 600, 0);
+    animar(el, quadro(el, 0, 1), quadro(el, saiuPorCima ? -1 : 1, 0), 600, 0);
   }
 
   // Elementos que entram juntos aparecem em sequência (efeito cascata).
@@ -85,7 +90,7 @@
       if (temFilhoCandidato) continue;
       registrados.add(el);
       // Começa escondido; o observador revela o que estiver na tela.
-      animar(el, quadro(DESLOCAMENTO, 0), quadro(DESLOCAMENTO, 0), 0, 0);
+      animar(el, quadro(el, 1, 0), quadro(el, 1, 0), 0, 0);
       observador.observe(el);
     }
   }
