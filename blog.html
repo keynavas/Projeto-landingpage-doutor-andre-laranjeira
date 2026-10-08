@@ -8,8 +8,8 @@
 <body>
 <x-dc>
 <helmet>
-<title>Blog · Dr. André, Pediatra no Tatuapé</title>
-<meta name="description" content="Acontecimentos, eventos e novidades do Dr. André, pediatra no Tatuapé, São Paulo.">
+<title>Blog · Dr. André Laranjeira, Pediatra no Tatuapé</title>
+<meta name="description" content="Acontecimentos, eventos e novidades do Dr. André Laranjeira, pediatra no Tatuapé, São Paulo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -29,9 +29,9 @@ input,textarea,button{font-family:inherit}
 
   <header style="position:sticky;top:0;z-index:20;padding:16px clamp(16px,4vw,48px)">
     <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 10px 10px 26px;background:rgba(255,255,255,0.66);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.9);border-radius:999px;box-shadow:0 8px 32px rgba(59,130,246,0.08)">
-      <a href="index.html" aria-label="Dr. André, Pediatra — início" style="flex:none;white-space:nowrap;display:flex;align-items:baseline;gap:12px;color:#1F2937">
-        <span style="font-family:'Newsreader',serif;font-size:24px;font-weight:500;letter-spacing:-0.01em">Dr. André</span>
-        <span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3B82F6">Pediatra</span>
+      <a href="index.html" aria-label="Dr. André Laranjeira, Pediatra — início" style="flex:none;white-space:nowrap;display:flex;align-items:baseline;gap:12px;color:#1F2937">
+        <span style="font-family:'Newsreader',serif;font-size:clamp(20px,6.4vw,24px);font-weight:500;letter-spacing:-0.01em">Dr. André Laranjeira</span>
+        <sc-if value="{{ showTag }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3B82F6">Pediatra</span></sc-if>
       </a>
       <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
         <nav aria-label="Principal" style="display:flex;gap:2px">
@@ -115,7 +115,7 @@ input,textarea,button{font-family:inherit}
 
   <footer style="padding:0 clamp(16px,4vw,48px) 48px">
     <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:40px;border-top:1px solid rgba(96,165,250,0.3);font-size:13px">
-      <span>© 2026 Dr. André · Pediatra em São Paulo</span>
+      <span>© 2026 Dr. André Laranjeira · Pediatra em São Paulo</span>
       <span>As informações deste site não substituem a consulta médica.</span>
     </div>
   </footer>
@@ -322,10 +322,10 @@ class Component extends DCLogic {
     const vp = posts.find(p => p.id === viewId);
     const home = 'index.html';
     const id = ytId(f.yt);
-    const menuOpen = !!this.state.menu && w < 1080;
+    const menuOpen = !!this.state.menu && w < 1240;
     return {
-      showNav: w >= 1080,
-      showBurger: w < 1080, showHeaderCta: w >= 640, ctaInMenu: w < 640,
+      showNav: w >= 1240, showTag: w >= 480,
+      showBurger: w < 1240, showHeaderCta: w >= 640, ctaInMenu: w < 640,
       menuOpen, menuClosed: !menuOpen, menuExpanded: menuOpen ? 'true' : 'false',
       menuLabel: menuOpen ? 'Fechar menu' : 'Abrir menu',
       toggleMenu: () => this.setState(s => ({ menu: !s.menu })),

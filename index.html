@@ -8,8 +8,8 @@
 <body>
 <x-dc>
 <helmet>
-<title>Dr. André · Pediatra no Tatuapé, São Paulo | Pediatria geral e neonatal</title>
-<meta name="description" content="Dr. André, pediatra com 16 anos de experiência em pediatria geral e neonatal. Consultório no Tatuapé, São Paulo. Agende sua consulta pelo WhatsApp.">
+<title>Dr. André Laranjeira · Pediatra no Tatuapé, São Paulo | Pediatria geral e neonatal</title>
+<meta name="description" content="Dr. André Laranjeira, pediatra com 16 anos de experiência em pediatria geral e neonatal. Consultório no Tatuapé, São Paulo. Agende sua consulta pelo WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -28,9 +28,9 @@ h1,h2,h3,p,ol,ul{margin:0}
 
   <header style="position:sticky;top:0;z-index:20;padding:16px clamp(16px,4vw,48px)">
     <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 10px 10px 26px;background:rgba(255,255,255,0.66);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.9);border-radius:999px;box-shadow:0 8px 32px rgba(59,130,246,0.08)">
-      <a href="#inicio" aria-label="Dr. André, Pediatra — início" style="flex:none;white-space:nowrap;display:flex;align-items:baseline;gap:12px;color:#1F2937">
-        <span style="font-family:'Newsreader',serif;font-size:24px;font-weight:500;letter-spacing:-0.01em">Dr. André</span>
-        <span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3B82F6">Pediatra</span>
+      <a href="#inicio" aria-label="Dr. André Laranjeira, Pediatra — início" style="flex:none;white-space:nowrap;display:flex;align-items:baseline;gap:12px;color:#1F2937">
+        <span style="font-family:'Newsreader',serif;font-size:clamp(20px,6.4vw,24px);font-weight:500;letter-spacing:-0.01em">Dr. André Laranjeira</span>
+        <sc-if value="{{ showTag }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3B82F6">Pediatra</span></sc-if>
       </a>
       <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
         <nav aria-label="Principal" style="display:flex;gap:2px">
@@ -71,7 +71,7 @@ h1,h2,h3,p,ol,ul{margin:0}
     <section id="inicio" aria-labelledby="hero-title" style="position:relative;margin-top:-94px">
       <sc-if value="{{ heroWide }}" hint-placeholder-val="{{ true }}">
         <div style="position:relative;overflow:hidden;min-height:max(720px,100vh);display:flex;align-items:center;padding:140px clamp(24px,4vw,48px) 80px">
-          <img src="assets/hero-dr-andre.jpg" alt="Dr. André, pediatra, sorrindo em seu consultório ao lado de uma mãe com o bebê no colo" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center">
+          <img src="assets/hero-dr-andre.jpg" alt="Dr. André Laranjeira, pediatra, sorrindo em seu consultório ao lado de uma mãe com o bebê no colo" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center">
           <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(240,249,255,0.88) 0%,rgba(240,249,255,0.5) 34%,rgba(240,249,255,0) 58%),linear-gradient(0deg,#F0F9FF 0%,rgba(240,249,255,0) 16%)"></div>
           <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;display:flex">
             <div style="max-width:min(520px,42vw);display:flex;flex-direction:column;gap:28px;padding:48px;border-radius:32px;background:rgba(255,255,255,0.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.95);box-shadow:0 20px 60px rgba(31,41,55,0.08)">
@@ -89,7 +89,7 @@ h1,h2,h3,p,ol,ul{margin:0}
       <sc-if value="{{ heroNarrow }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-direction:column;padding:108px clamp(16px,4vw,48px) 0;max-width:1000px;margin:0 auto">
           <div style="position:relative;width:100%;height:max(300px,min(64vh,58vw));overflow:hidden;border-radius:32px;border:1px solid rgba(255,255,255,0.9);box-shadow:0 24px 60px rgba(59,130,246,0.16)">
-            <img src="assets/hero-dr-andre.jpg" alt="Dr. André, pediatra, sorrindo em seu consultório ao lado de uma mãe com o bebê no colo" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 30%">
+            <img src="assets/hero-dr-andre.jpg" alt="Dr. André Laranjeira, pediatra, sorrindo em seu consultório ao lado de uma mãe com o bebê no colo" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 30%">
           </div>
           <div style="position:relative;margin:-48px clamp(12px,3vw,32px) 0;display:flex;flex-direction:column;gap:24px;padding:clamp(28px,5vw,44px);border-radius:28px;background:rgba(255,255,255,0.8);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.95);box-shadow:0 12px 40px rgba(59,130,246,0.1)">
             <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Pediatria geral e neonatal · Tatuapé</span>
@@ -118,7 +118,7 @@ h1,h2,h3,p,ol,ul{margin:0}
         <div style="flex:1.3 1 420px;display:flex;flex-direction:column;gap:28px;max-width:600px">
           <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Sobre o Dr. André Laranjeira</span>
           <h2 id="sobre-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,3.8vw,50px);line-height:1.1;letter-spacing:-0.02em;text-wrap:balance">Experiência médica, com proximidade das famílias.</h2>
-          <p style="font-size:18px;line-height:1.75;text-wrap:pretty">Pediatra com atuação em pediatria geral e neonatal, o Dr. André acompanha a criança desde a sala de parto: recém-nascidos, prematuros, bebês e crianças em cada fase do desenvolvimento.</p>
+          <p style="font-size:18px;line-height:1.75;text-wrap:pretty">Pediatra com atuação em pediatria geral e neonatal, o Dr. André Laranjeira acompanha a criança desde a sala de parto: recém-nascidos, prematuros, bebês e crianças em cada fase do desenvolvimento.</p>
           <p style="font-size:18px;line-height:1.75;text-wrap:pretty">Em cada consulta, a família faz parte do cuidado, com orientações claras e acompanhamento próximo.</p>
         </div>
       </div>
@@ -172,7 +172,7 @@ h1,h2,h3,p,ol,ul{margin:0}
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:24px">
           <div id="localizacao" style="flex:1.5 1 480px;position:relative;overflow:hidden;min-height:500px;display:flex;align-items:flex-end;border-radius:32px;border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 50px rgba(59,130,246,0.12);background:#e3f0fb">
-            <iframe title="Mapa do consultório do Dr. André na Rua Nestor de Barros, 116, Tatuapé, São Paulo" src="https://www.google.com/maps?q=Rua+Nestor+de+Barros,+116,+Tatuap%C3%A9,+S%C3%A3o+Paulo+SP&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(0.55)"></iframe>
+            <iframe title="Mapa do consultório do Dr. André Laranjeira na Rua Nestor de Barros, 116, Tatuapé, São Paulo" src="https://www.google.com/maps?q=Rua+Nestor+de+Barros,+116,+Tatuap%C3%A9,+S%C3%A3o+Paulo+SP&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(0.55)"></iframe>
             <div style="position:relative;margin:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;width:100%;padding:28px 32px;border-radius:24px;background:rgba(255,255,255,0.84);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.95);box-shadow:0 12px 36px rgba(31,41,55,0.1)">
               <div style="display:flex;flex-direction:column;gap:8px">
                 <h3 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Consultório</h3>
@@ -215,7 +215,7 @@ h1,h2,h3,p,ol,ul{margin:0}
     <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:56px;padding-top:64px;border-top:1px solid rgba(96,165,250,0.3)">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:40px">
         <div style="display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:'Newsreader',serif;font-size:26px;font-weight:500">Dr. André</span>
+          <span style="font-family:'Newsreader',serif;font-size:26px;font-weight:500">Dr. André Laranjeira</span>
           <span style="font-size:15px">Pediatria geral e neonatal</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.55">
@@ -237,7 +237,7 @@ h1,h2,h3,p,ol,ul{margin:0}
         </nav>
       </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:#1F2937">
-        <span>© 2026 Dr. André · Pediatra em São Paulo</span>
+        <span>© 2026 Dr. André Laranjeira · Pediatra em São Paulo</span>
         <span>As informações deste site não substituem a consulta médica.</span>
       </div>
     </div>
@@ -266,12 +266,12 @@ class Component extends DCLogic {
   }
   renderVals() {
     const w = this.state.w;
-    const menuOpen = this.state.menu && w < 1080;
+    const menuOpen = this.state.menu && w < 1240;
     return {
       wa: 'https://wa.me/5511947450720',
       maps: 'https://www.google.com/maps/search/?api=1&query=Rua+Nestor+de+Barros,+116,+Tatuap%C3%A9,+S%C3%A3o+Paulo+SP',
-      showNav: w >= 1080,
-      showBurger: w < 1080, showHeaderCta: w >= 640, ctaInMenu: w < 640,
+      showNav: w >= 1240, showTag: w >= 480,
+      showBurger: w < 1240, showHeaderCta: w >= 640, ctaInMenu: w < 640,
       menuOpen, menuClosed: !menuOpen, menuExpanded: menuOpen ? 'true' : 'false',
       menuLabel: menuOpen ? 'Fechar menu' : 'Abrir menu',
       toggleMenu: () => this.setState(s => ({ menu: !s.menu })),

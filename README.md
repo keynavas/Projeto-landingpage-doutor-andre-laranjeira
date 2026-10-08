@@ -1,6 +1,6 @@
-# Site do Dr. André · Pediatra no Tatuapé
+# Site do Dr. André Laranjeira · Pediatra no Tatuapé
 
-Site institucional do Dr. André, pediatra (pediatria geral e neonatal) com consultório no Tatuapé, São Paulo.
+Site institucional do Dr. André Laranjeira, pediatra (pediatria geral e neonatal) com consultório no Tatuapé, São Paulo.
 
 ## Páginas
 
