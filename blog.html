@@ -64,6 +64,11 @@ input,textarea,button{font-family:inherit}
         <sc-if value="{{ ctaInMenu }}" hint-placeholder-val="{{ true }}">
           <a href="https://wa.me/5511947450720" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="margin-top:8px;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:#3B82F6;color:#fff;font-size:17px;font-weight:600" style-hover="color:#fff">Agendar consulta</a>
         </sc-if>
+        <div style="display:flex;justify-content:center;gap:12px;margin-top:12px;padding-top:14px;border-top:1px solid rgba(96,165,250,0.2)">
+          <sc-for list="{{ social }}" as="s" hint-placeholder-count="3">
+            <a href="{{ s.href }}" target="_blank" rel="noopener" aria-label="{{ s.aria }}" onClick="{{ closeMenu }}" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(96,165,250,0.12);color:#3B82F6" style-hover="background:rgba(96,165,250,0.22);color:#3B82F6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ s.d }}"></path></svg></a>
+          </sc-for>
+        </div>
       </nav>
     </sc-if>
   </header>
@@ -74,6 +79,7 @@ input,textarea,button{font-family:inherit}
         <div style="display:flex;flex-direction:column;gap:20px;max-width:640px">
           <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Blog</span>
           <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,4.6vw,64px);line-height:1.05;letter-spacing:-0.025em;text-wrap:balance">Acontecimentos e <em style="color:#3B82F6">novidades.</em></h1>
+          <p style="font-size:17px;line-height:1.6">Mais conteúdos no <a href="https://www.instagram.com/drandrelaranjeira/" target="_blank" rel="noopener" style="font-weight:600">Instagram</a>, no <a href="https://www.youtube.com/@DrAndreLaranjeira-Pediatra" target="_blank" rel="noopener" style="font-weight:600">YouTube</a> e no <a href="https://www.facebook.com/drandrelaranjeira" target="_blank" rel="noopener" style="font-weight:600">Facebook</a>.</p>
         </div>
         <button type="button" onClick="{{ openCreate }}" style="display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 28px;border:0;border-radius:999px;background:#3B82F6;color:#fff;font-size:17px;font-weight:600;cursor:pointer;box-shadow:0 10px 28px rgba(59,130,246,0.3);transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><span aria-hidden="true" style="font-size:22px;line-height:1">+</span> Nova postagem</button>
       </div>
@@ -115,6 +121,14 @@ input,textarea,button{font-family:inherit}
 
   <footer style="padding:0 clamp(16px,4vw,48px) 48px">
     <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:40px;border-top:1px solid rgba(96,165,250,0.3);font-size:13px">
+      <div style="flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:20px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Acompanhe nas redes</span>
+        <div style="display:flex;gap:10px">
+          <sc-for list="{{ social }}" as="s" hint-placeholder-count="3">
+            <a href="{{ s.href }}" target="_blank" rel="noopener" aria-label="{{ s.aria }}" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(96,165,250,0.12);color:#3B82F6;transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.08);color:#3B82F6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ s.d }}"></path></svg></a>
+          </sc-for>
+        </div>
+      </div>
       <span>© 2026 Dr. André Laranjeira · Pediatra em São Paulo</span>
       <span>As informações deste site não substituem a consulta médica.</span>
     </div>
@@ -324,6 +338,11 @@ class Component extends DCLogic {
     const id = ytId(f.yt);
     const menuOpen = !!this.state.menu && w < 1240;
     return {
+      social: [
+        { label: 'Instagram', href: 'https://www.instagram.com/drandrelaranjeira/', d: 'M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zM16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01' },
+        { label: 'YouTube', href: 'https://www.youtube.com/@DrAndreLaranjeira-Pediatra', d: 'M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17M10 15l5-3-5-3z' },
+        { label: 'Facebook', href: 'https://www.facebook.com/drandrelaranjeira', d: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' }
+      ].map(s => ({ ...s, aria: s.label + ' do Dr. André Laranjeira (abre em nova aba)' })),
       showNav: w >= 1240, showTag: w >= 480,
       showBurger: w < 1240, showHeaderCta: w >= 640, ctaInMenu: w < 640,
       menuOpen, menuClosed: !menuOpen, menuExpanded: menuOpen ? 'true' : 'false',
