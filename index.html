@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Dr. André · Pediatra no Tatuapé, São Paulo | Pediatria geral e neonatal</title>
+<meta name="description" content="Dr. André, pediatra com 16 anos de experiência em pediatria geral e neonatal. Consultório no Tatuapé, São Paulo. Agende sua consulta pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F0F9FF;color:#1F2937;font-family:'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#3B82F6;text-decoration:none}
+a:hover{color:#1F2937}
+a:focus-visible,button:focus-visible,iframe:focus-visible{outline:3px solid #3B82F6;outline-offset:3px;border-radius:12px}
+h1,h2,h3,p,ol,ul{margin:0}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;min-height:100vh;background:#F0F9FF">
+  <div aria-hidden="true" style="position:absolute;top:1100px;left:-260px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.22),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;top:2600px;right:-260px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.2),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+
+  <header style="position:sticky;top:0;z-index:20;padding:16px clamp(16px,4vw,48px)">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 10px 10px 26px;background:rgba(255,255,255,0.66);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.9);border-radius:999px;box-shadow:0 8px 32px rgba(59,130,246,0.08)">
+      <a href="#inicio" aria-label="Dr. André, Pediatra — início" style="flex:none;white-space:nowrap;display:flex;align-items:baseline;gap:12px;color:#1F2937">
+        <span style="font-family:'Newsreader',serif;font-size:24px;font-weight:500;letter-spacing:-0.01em">Dr. André</span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3B82F6">Pediatra</span>
+      </a>
+      <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Principal" style="display:flex;gap:2px">
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+            <a href="{{ item.href }}" style="padding:10px 16px;border-radius:999px;font-size:15px;font-weight:500;color:#1F2937;transition:background .3s" style-hover="background:rgba(96,165,250,0.14);color:#1F2937">{{ item.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:46px;padding:0 24px;border-radius:999px;background:#3B82F6;color:#fff;font-size:16px;font-weight:600;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s" style-hover="transform:scale(1.05);box-shadow:0 10px 26px rgba(59,130,246,0.35);color:#fff">Agendar consulta</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" aria-labelledby="hero-title" style="position:relative;margin-top:-94px">
+      <sc-if value="{{ heroWide }}" hint-placeholder-val="{{ true }}">
+        <div style="position:relative;overflow:hidden;min-height:max(720px,100vh);display:flex;align-items:center;padding:140px clamp(24px,4vw,48px) 80px">
+          <img src="assets/hero-dr-andre.jpg" alt="Dr. André, pediatra, sorrindo em seu consultório ao lado de uma mãe com o bebê no colo" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center">
+          <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(240,249,255,0.88) 0%,rgba(240,249,255,0.5) 34%,rgba(240,249,255,0) 58%),linear-gradient(0deg,#F0F9FF 0%,rgba(240,249,255,0) 16%)"></div>
+          <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;display:flex">
+            <div style="max-width:min(520px,42vw);display:flex;flex-direction:column;gap:28px;padding:48px;border-radius:32px;background:rgba(255,255,255,0.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.95);box-shadow:0 20px 60px rgba(31,41,55,0.08)">
+              <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Pediatria geral e neonatal · Tatuapé</span>
+              <h1 id="hero-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,3.8vw,56px);line-height:1.06;letter-spacing:-0.025em;text-wrap:balance">Pediatra para acompanhar seu filho desde os <em style="color:#3B82F6">primeiros momentos de vida.</em></h1>
+              <p style="font-size:18px;line-height:1.65;text-wrap:pretty">Há 16 anos cuidando de bebês, crianças e suas famílias.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:4px">
+                <a href="{{ wa }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 30px;border-radius:999px;background:#3B82F6;color:#fff;font-size:17px;font-weight:600;box-shadow:0 10px 28px rgba(59,130,246,0.3);transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05);color:#fff">Agendar pelo WhatsApp <span aria-hidden="true">→</span></a>
+                <a href="#atuacao" style="display:inline-flex;align-items:center;min-height:56px;padding:0 26px;border-radius:999px;border:1px solid rgba(96,165,250,0.5);color:#1F2937;font-size:17px;font-weight:600;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s" style-hover="transform:scale(1.05);border-color:#3B82F6;color:#1F2937">Áreas de atuação</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ heroNarrow }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;padding:108px clamp(16px,4vw,48px) 0;max-width:1000px;margin:0 auto">
+          <div style="position:relative;width:100%;height:max(300px,min(64vh,58vw));overflow:hidden;border-radius:32px;border:1px solid rgba(255,255,255,0.9);box-shadow:0 24px 60px rgba(59,130,246,0.16)">
+            <img src="assets/hero-dr-andre.jpg" alt="Dr. André, pediatra, sorrindo em seu consultório ao lado de uma mãe com o bebê no colo" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 30%">
+          </div>
+          <div style="position:relative;margin:-48px clamp(12px,3vw,32px) 0;display:flex;flex-direction:column;gap:24px;padding:clamp(28px,5vw,44px);border-radius:28px;background:rgba(255,255,255,0.8);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.95);box-shadow:0 12px 40px rgba(59,130,246,0.1)">
+            <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Pediatria geral e neonatal · Tatuapé</span>
+            <h1 id="hero-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,7vw,52px);line-height:1.08;letter-spacing:-0.025em;text-wrap:balance">Pediatra para acompanhar seu filho desde os <em style="color:#3B82F6">primeiros momentos de vida.</em></h1>
+            <p style="font-size:17px;line-height:1.65;text-wrap:pretty">Há 16 anos cuidando de bebês, crianças e suas famílias.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:1 1 220px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:999px;background:#3B82F6;color:#fff;font-size:17px;font-weight:600" style-hover="color:#fff">Agendar pelo WhatsApp <span aria-hidden="true">→</span></a>
+              <a href="#atuacao" style="flex:1 1 180px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 26px;border-radius:999px;border:1px solid rgba(96,165,250,0.5);color:#1F2937;font-size:17px;font-weight:600" style-hover="color:#1F2937">Áreas de atuação</a>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+    <section id="sobre" aria-labelledby="sobre-title" style="padding:clamp(96px,11vw,160px) clamp(16px,4vw,48px) 0">
+      <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,96px);align-items:center">
+        <div style="flex:1 1 380px;position:relative;max-width:560px">
+          <div style="border-radius:36px;overflow:hidden;aspect-ratio:777/836;border:1px solid rgba(255,255,255,0.9);box-shadow:0 24px 60px rgba(59,130,246,0.16)">
+            <img src="assets/retrato-dr-andre.jpg" alt="Retrato do Dr. André Laranjeira, pediatra, de jaleco branco e gravata azul" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block">
+          </div>
+          <div style="position:absolute;right:clamp(-24px,-2vw,-8px);bottom:clamp(-32px,-3vw,-16px);display:flex;align-items:center;gap:16px;padding:22px 28px;border-radius:26px;background:rgba(255,255,255,0.74);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.95);box-shadow:0 16px 44px rgba(31,41,55,0.1);transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)">
+            <span style="font-family:'Newsreader',serif;font-size:64px;line-height:0.9;letter-spacing:-0.04em;color:#3B82F6">16</span>
+            <span style="font-size:15px;line-height:1.45;font-weight:500;max-width:170px">anos dedicados ao cuidado de bebês, crianças e famílias</span>
+          </div>
+        </div>
+        <div style="flex:1.3 1 420px;display:flex;flex-direction:column;gap:28px;max-width:600px">
+          <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Sobre o Dr. André Laranjeira</span>
+          <h2 id="sobre-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,3.8vw,50px);line-height:1.1;letter-spacing:-0.02em;text-wrap:balance">Experiência médica, com proximidade das famílias.</h2>
+          <p style="font-size:18px;line-height:1.75;text-wrap:pretty">Pediatra com atuação em pediatria geral e neonatal, o Dr. André acompanha a criança desde a sala de parto: recém-nascidos, prematuros, bebês e crianças em cada fase do desenvolvimento.</p>
+          <p style="font-size:18px;line-height:1.75;text-wrap:pretty">Em cada consulta, a família faz parte do cuidado, com orientações claras e acompanhamento próximo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="jornada" aria-labelledby="jornada-title" style="padding:clamp(96px,11vw,160px) clamp(16px,4vw,48px) 0">
+      <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,5vw,72px)">
+        <div style="display:flex;flex-direction:column;gap:20px;max-width:680px">
+          <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Jornada do cuidado</span>
+          <h2 id="jornada-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,3.8vw,50px);line-height:1.1;letter-spacing:-0.02em;text-wrap:balance">Um acompanhamento que começa cedo e segue com a criança.</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:36px;padding:clamp(36px,4.5vw,64px);border-radius:36px;background:rgba(255,255,255,0.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.9);box-shadow:0 12px 44px rgba(59,130,246,0.07)">
+          <ol style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:40px 28px">
+            <sc-for list="{{ journey }}" as="j" hint-placeholder-count="5">
+              <li style="position:relative;display:flex;flex-direction:column;gap:14px;padding-top:36px;border-top:1px solid rgba(96,165,250,0.45);transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)">
+                <span aria-hidden="true" style="position:absolute;top:-7px;left:0;width:13px;height:13px;border-radius:50%;background:#3B82F6;box-shadow:0 0 0 6px rgba(96,165,250,0.18)"></span>
+                <span style="font-size:13px;font-weight:600;letter-spacing:0.1em;color:#3B82F6">{{ j.n }}</span>
+                <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;letter-spacing:-0.01em">{{ j.title }}</h3>
+                <p style="font-size:16px;line-height:1.6;text-wrap:pretty">{{ j.text }}</p>
+              </li>
+            </sc-for>
+          </ol>
+          <p style="font-size:14px;line-height:1.6;padding-top:28px;border-top:1px solid rgba(96,165,250,0.2)">Atuação pediátrica e neonatal. O pré-natal e o parto são conduzidos pela equipe obstétrica.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="atuacao" aria-labelledby="atuacao-title" style="padding:clamp(96px,11vw,160px) clamp(16px,4vw,48px) 0">
+      <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,5vw,72px)">
+        <div style="display:flex;flex-direction:column;gap:20px;max-width:680px">
+          <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Áreas de atuação</span>
+          <h2 id="atuacao-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,3.8vw,50px);line-height:1.1;letter-spacing:-0.02em;text-wrap:balance">Pediatria geral e neonatal em São Paulo.</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px">
+          <sc-for list="{{ areas }}" as="a" hint-placeholder-count="6">
+            <article style="display:flex;flex-direction:column;gap:16px;padding:40px 36px;border-radius:30px;background:rgba(255,255,255,0.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.9);box-shadow:0 8px 30px rgba(59,130,246,0.06);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,border-color .45s" style-hover="transform:scale(1.05);box-shadow:0 18px 44px rgba(59,130,246,0.14);border-color:rgba(96,165,250,0.6)">
+              <span aria-hidden="true" style="width:32px;height:2px;border-radius:2px;background:#60A5FA;margin-bottom:12px"></span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:28px;letter-spacing:-0.01em">{{ a.title }}</h3>
+              <p style="font-size:16px;line-height:1.6;text-wrap:pretty">{{ a.text }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="atendimento" aria-labelledby="onde-title" style="padding:clamp(96px,11vw,160px) clamp(16px,4vw,48px) 0">
+      <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,5vw,72px)">
+        <div style="display:flex;flex-direction:column;gap:20px;max-width:680px">
+          <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Onde atende</span>
+          <h2 id="onde-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,3.8vw,50px);line-height:1.1;letter-spacing:-0.02em;text-wrap:balance">Pediatra no Tatuapé, com atuação hospitalar.</h2>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px">
+          <div id="localizacao" style="flex:1.5 1 480px;position:relative;overflow:hidden;min-height:500px;display:flex;align-items:flex-end;border-radius:32px;border:1px solid rgba(255,255,255,0.9);box-shadow:0 16px 50px rgba(59,130,246,0.12);background:#e3f0fb">
+            <iframe title="Mapa do consultório do Dr. André na Rua Nestor de Barros, 116, Tatuapé, São Paulo" src="https://www.google.com/maps?q=Rua+Nestor+de+Barros,+116,+Tatuap%C3%A9,+S%C3%A3o+Paulo+SP&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(0.55)"></iframe>
+            <div style="position:relative;margin:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;width:100%;padding:28px 32px;border-radius:24px;background:rgba(255,255,255,0.84);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.95);box-shadow:0 12px 36px rgba(31,41,55,0.1)">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <h3 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Consultório</h3>
+                <p style="font-family:'Newsreader',serif;font-size:24px;line-height:1.3">Rua Nestor de Barros, 116<br>Tatuapé — São Paulo/SP</p>
+              </div>
+              <a href="{{ maps }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;background:#3B82F6;color:#fff;font-size:16px;font-weight:600;transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05);color:#fff">Ver localização</a>
+            </div>
+          </div>
+          <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:24px">
+            <article style="flex:1;display:flex;flex-direction:column;gap:24px;padding:40px 36px;border-radius:30px;background:rgba(255,255,255,0.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.9);box-shadow:0 8px 30px rgba(59,130,246,0.06);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s" style-hover="transform:scale(1.05);box-shadow:0 18px 44px rgba(59,130,246,0.14)">
+              <h3 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Atuação hospitalar</h3>
+              <div style="display:flex;flex-direction:column;gap:18px">
+                <p style="font-size:17px;line-height:1.5"><strong style="font-weight:600">Hospital Israelita Albert Einstein</strong><br>Unidade Perdizes</p>
+                <span style="height:1px;background:rgba(96,165,250,0.3)"></span>
+                <p style="font-size:17px;line-height:1.5"><strong style="font-weight:600">Hospital Israelita Albert Einstein</strong><br>Unidade Morumbi</p>
+              </div>
+            </article>
+            <article style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:32px 36px;border-radius:30px;background:rgba(255,255,255,0.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.9);box-shadow:0 8px 30px rgba(59,130,246,0.06);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s" style-hover="transform:scale(1.05);box-shadow:0 18px 44px rgba(59,130,246,0.14)">
+              <h3 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6;max-width:160px;line-height:1.5">Formação / vínculo institucional</h3>
+              <p style="font-family:'Newsreader',serif;font-size:40px;line-height:1">USP</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="cta-title" style="padding:clamp(96px,11vw,160px) clamp(16px,4vw,48px)">
+      <div style="max-width:1240px;margin:0 auto;position:relative;overflow:hidden;border-radius:44px;padding:clamp(64px,8vw,120px) clamp(28px,5vw,80px);background:#3B82F6;color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center;gap:40px">
+        <div aria-hidden="true" style="position:absolute;top:-200px;right:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.22),rgba(255,255,255,0) 70%)"></div>
+        <h2 id="cta-title" style="position:relative;font-family:'Newsreader',serif;font-weight:400;font-size:clamp(36px,4.6vw,62px);line-height:1.1;letter-spacing:-0.02em;max-width:800px;text-wrap:balance">O cuidado com seu filho começa com acompanhamento de confiança.</h2>
+        <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:16px">
+          <a href="{{ wa }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:60px;padding:0 38px;border-radius:999px;background:#fff;color:#1F2937;font-size:18px;font-weight:700;box-shadow:0 14px 34px rgba(31,41,55,0.18);transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05);color:#1F2937">Agendar consulta <span aria-hidden="true" style="color:#3B82F6">→</span></a>
+          <span style="font-size:15px;font-weight:500">WhatsApp +55 11 94745-0720</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding:0 clamp(16px,4vw,48px) 48px">
+    <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:56px;padding-top:64px;border-top:1px solid rgba(96,165,250,0.3)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:40px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Newsreader',serif;font-size:26px;font-weight:500">Dr. André</span>
+          <span style="font-size:15px">Pediatria geral e neonatal</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.55">
+          <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Consultório</span>
+          <span>Rua Nestor de Barros, 116<br>Tatuapé — São Paulo/SP</span>
+          <a href="{{ wa }}" target="_blank" rel="noopener" style="font-weight:600">+55 11 94745-0720</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.55">
+          <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Atuação</span>
+          <span>Einstein — Perdizes</span>
+          <span>Einstein — Morumbi</span>
+          <span>USP</span>
+        </div>
+        <nav aria-label="Rodapé" style="display:flex;flex-direction:column;gap:6px;font-size:15px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6;margin-bottom:4px">Navegação</span>
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+            <a href="{{ item.href }}" style="color:#1F2937;padding:3px 0" style-hover="color:#3B82F6">{{ item.label }}</a>
+          </sc-for>
+        </nav>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:#1F2937">
+        <span>© 2026 Dr. André · Pediatra em São Paulo</span>
+        <span>As informações deste site não substituem a consulta médica.</span>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showFloat }}" hint-placeholder-val="{{ false }}">
+    <a href="{{ wa }}" target="_blank" rel="noopener" style="position:fixed;left:16px;right:16px;bottom:16px;z-index:30;display:flex;align-items:center;justify-content:center;min-height:56px;border-radius:999px;background:#3B82F6;color:#fff;font-size:17px;font-weight:600;box-shadow:0 12px 32px rgba(59,130,246,0.4)" style-hover="color:#fff">Agendar pelo WhatsApp</a>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;floatingWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Mobile&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, y: 0 };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth });
+    this.onS = () => this.setState({ y: window.scrollY });
+    window.addEventListener('resize', this.onR);
+    window.addEventListener('scroll', this.onS, { passive: true });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onR);
+    window.removeEventListener('scroll', this.onS);
+  }
+  renderVals() {
+    const w = this.state.w;
+    return {
+      wa: 'https://wa.me/5511947450720',
+      maps: 'https://www.google.com/maps/search/?api=1&query=Rua+Nestor+de+Barros,+116,+Tatuap%C3%A9,+S%C3%A3o+Paulo+SP',
+      showNav: w >= 1080,
+      heroWide: w >= 1080, heroNarrow: w < 1080,
+      showFloat: w < 900 && (this.props.floatingWhatsApp ?? true) && this.state.y > 500,
+      nav: [
+        { label: 'Início', href: '#inicio' }, { label: 'Sobre', href: '#sobre' },
+        { label: 'Atuação', href: '#atuacao' }, { label: 'Atendimento', href: '#atendimento' },
+        { label: 'Localização', href: '#localizacao' }, { label: 'Blog', href: 'blog.html' }
+      ],
+      journey: [
+        { n: '01', title: 'Gestação', text: 'Preparação da família para a chegada do bebê.' },
+        { n: '02', title: 'Nascimento', text: 'Pediatra presente na sala de parto.' },
+        { n: '03', title: 'Recém-nascido', text: 'Cuidado neonatal, inclusive de prematuros.' },
+        { n: '04', title: 'Bebê', text: 'Acompanhamento do desenvolvimento.' },
+        { n: '05', title: 'Criança', text: 'Pediatria geral ao longo da infância.' }
+      ],
+      areas: [
+        { title: 'Pediatria Geral', text: 'Acompanhamento completo da saúde e desenvolvimento infantil.' },
+        { title: 'Pediatria Neonatal', text: 'Atendimento e acompanhamento de recém-nascidos.' },
+        { title: 'Sala de Parto', text: 'Atuação pediátrica nos primeiros momentos de vida.' },
+        { title: 'Prematuros', text: 'Acompanhamento de recém-nascidos prematuros.' },
+        { title: 'Bebês', text: 'Acompanhamento das diferentes fases do desenvolvimento do bebê.' },
+        { title: 'Crianças', text: 'Acompanhamento pediátrico durante a infância.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

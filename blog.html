@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Blog · Dr. André, Pediatra no Tatuapé</title>
+<meta name="description" content="Acontecimentos, eventos e novidades do Dr. André, pediatra no Tatuapé, São Paulo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F0F9FF;color:#1F2937;font-family:'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#3B82F6;text-decoration:none}
+a:hover{color:#1F2937}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #3B82F6;outline-offset:2px}
+h1,h2,h3,p{margin:0}
+input,textarea,button{font-family:inherit}
+</style>
+</helmet>
+<div style="position:relative;overflow:hidden;min-height:100vh;background:#F0F9FF">
+  <div aria-hidden="true" style="position:absolute;top:-200px;right:-200px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.26),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;top:900px;left:-260px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.18),rgba(96,165,250,0) 70%);pointer-events:none"></div>
+
+  <header style="position:sticky;top:0;z-index:20;padding:16px clamp(16px,4vw,48px)">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 10px 10px 26px;background:rgba(255,255,255,0.66);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.9);border-radius:999px;box-shadow:0 8px 32px rgba(59,130,246,0.08)">
+      <a href="index.html" aria-label="Dr. André, Pediatra — início" style="flex:none;white-space:nowrap;display:flex;align-items:baseline;gap:12px;color:#1F2937">
+        <span style="font-family:'Newsreader',serif;font-size:24px;font-weight:500;letter-spacing:-0.01em">Dr. André</span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#3B82F6">Pediatra</span>
+      </a>
+      <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Principal" style="display:flex;gap:2px">
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+            <a href="{{ item.href }}" aria-current="{{ item.current }}" style="padding:10px 16px;border-radius:999px;font-size:15px;font-weight:500;color:#1F2937;background:{{ item.bg }};transition:background .3s" style-hover="background:rgba(96,165,250,0.14);color:#1F2937">{{ item.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <a href="https://wa.me/5511947450720" target="_blank" rel="noopener" style="flex:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:46px;padding:0 24px;border-radius:999px;background:#3B82F6;color:#fff;font-size:16px;font-weight:600;transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05);color:#fff">Agendar consulta</a>
+    </div>
+  </header>
+
+  <main style="position:relative;padding:clamp(56px,7vw,104px) clamp(16px,4vw,48px) clamp(96px,11vw,160px)">
+    <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px">
+        <div style="display:flex;flex-direction:column;gap:20px;max-width:640px">
+          <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Blog</span>
+          <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,4.6vw,64px);line-height:1.05;letter-spacing:-0.025em;text-wrap:balance">Acontecimentos e <em style="color:#3B82F6">novidades.</em></h1>
+        </div>
+        <button type="button" onClick="{{ openCreate }}" style="display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 28px;border:0;border-radius:999px;background:#3B82F6;color:#fff;font-size:17px;font-weight:600;cursor:pointer;box-shadow:0 10px 28px rgba(59,130,246,0.3);transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)"><span aria-hidden="true" style="font-size:22px;line-height:1">+</span> Nova postagem</button>
+      </div>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;padding:clamp(56px,8vw,104px) 24px;border-radius:36px;background:rgba(255,255,255,0.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px dashed rgba(96,165,250,0.55)">
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3vw,38px);letter-spacing:-0.01em">Nenhuma postagem ainda</h2>
+          <p style="font-size:17px;line-height:1.6;max-width:420px">Publique o primeiro acontecimento com texto, data e um vídeo do YouTube ou uma imagem.</p>
+          <button type="button" onClick="{{ openCreate }}" style="margin-top:8px;min-height:52px;padding:0 26px;border-radius:999px;border:1px solid rgba(96,165,250,0.5);background:rgba(255,255,255,0.7);color:#1F2937;font-size:16px;font-weight:600;cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)">Criar postagem</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasPosts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:28px">
+          <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
+            <article style="display:flex;flex-direction:column;border-radius:30px;overflow:hidden;background:rgba(255,255,255,0.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.9);box-shadow:0 8px 30px rgba(59,130,246,0.07);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s" style-hover="transform:scale(1.03);box-shadow:0 18px 44px rgba(59,130,246,0.14)">
+              <button type="button" onClick="{{ p.open }}" aria-label="Abrir postagem: {{ p.title }}" style="all:unset;cursor:pointer;display:flex;flex-direction:column">
+                <div style="position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,#dbeafe,#F0F9FF);overflow:hidden">
+                  <sc-if value="{{ p.thumb }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ p.thumb }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+                  </sc-if>
+                  <sc-if value="{{ p.isVideo }}" hint-placeholder-val="{{ false }}">
+                    <span aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.88);backdrop-filter:blur(10px);display:grid;place-items:center;box-shadow:0 8px 24px rgba(31,41,55,0.18)"><span style="width:0;height:0;margin-left:5px;border-left:18px solid #3B82F6;border-top:11px solid transparent;border-bottom:11px solid transparent"></span></span>
+                  </sc-if>
+                  <span style="position:absolute;left:16px;top:16px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#1F2937">{{ p.kind }}</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:14px;padding:30px 30px 34px">
+                  <time style="font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3B82F6">{{ p.dateLabel }}</time>
+                  <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;line-height:1.2;letter-spacing:-0.01em;text-wrap:balance">{{ p.title }}</h2>
+                  <p style="font-size:16px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ p.desc }}</p>
+                </div>
+              </button>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+
+  <footer style="padding:0 clamp(16px,4vw,48px) 48px">
+    <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:40px;border-top:1px solid rgba(96,165,250,0.3);font-size:13px">
+      <span>© 2026 Dr. André · Pediatra em São Paulo</span>
+      <span>As informações deste site não substituem a consulta médica.</span>
+    </div>
+  </footer>
+
+  <sc-if value="{{ creating }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:clamp(16px,5vh,56px) 16px;overflow-y:auto;background:rgba(31,41,55,0.32);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)" onClick="{{ closeCreate }}">
+      <form role="dialog" aria-modal="true" aria-labelledby="form-title" onSubmit="{{ submit }}" onClick="{{ stop }}" noValidate="{{ true }}" style="width:100%;max-width:640px;display:flex;flex-direction:column;gap:32px;padding:clamp(28px,5vw,48px);border-radius:32px;background:rgba(255,255,255,0.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid #fff;box-shadow:0 30px 80px rgba(31,41,55,0.2)">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Nova postagem</span>
+            <h2 id="form-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,36px);letter-spacing:-0.015em">Conte o que aconteceu</h2>
+          </div>
+          <button type="button" onClick="{{ closeCreate }}" aria-label="Fechar" style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(96,165,250,0.35);background:#fff;color:#1F2937;font-size:22px;line-height:1;cursor:pointer">×</button>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <label style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:15px;font-weight:600">Título do acontecido</span>
+            <input type="text" value="{{ f.title }}" onChange="{{ setTitle }}" placeholder="Ex.: Palestra sobre amamentação" maxLength="120" style="min-height:54px;padding:0 18px;border-radius:16px;border:1px solid {{ errTitleBorder }};background:#F0F9FF;color:#1F2937;font-size:16px;outline:none">
+            <sc-if value="{{ errTitle }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:14px;color:#B91C1C">Informe o título.</span></sc-if>
+          </label>
+
+          <label style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:15px;font-weight:600">Descrição</span>
+            <textarea value="{{ f.desc }}" onChange="{{ setDesc }}" rows="5" placeholder="Descreva o acontecimento" style="padding:16px 18px;border-radius:16px;border:1px solid {{ errDescBorder }};background:#F0F9FF;color:#1F2937;font-size:16px;line-height:1.6;resize:vertical;outline:none"></textarea>
+            <sc-if value="{{ errDesc }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:14px;color:#B91C1C">Escreva uma descrição.</span></sc-if>
+          </label>
+
+          <label style="display:flex;flex-direction:column;gap:10px;max-width:260px">
+            <span style="font-size:15px;font-weight:600">Data do evento</span>
+            <input type="date" value="{{ f.date }}" onChange="{{ setDate }}" style="min-height:54px;padding:0 18px;border-radius:16px;border:1px solid {{ errDateBorder }};background:#F0F9FF;color:#1F2937;font-size:16px;outline:none">
+            <sc-if value="{{ errDate }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:14px;color:#B91C1C">Escolha a data.</span></sc-if>
+          </label>
+
+          <fieldset style="margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:14px">
+            <legend style="padding:0;margin-bottom:14px;font-size:15px;font-weight:600">Mídia <span style="font-weight:400">(opcional)</span></legend>
+            <div role="tablist" style="display:flex;gap:6px;padding:6px;border-radius:999px;background:#F0F9FF;border:1px solid rgba(96,165,250,0.3);align-self:flex-start">
+              <button type="button" role="tab" aria-selected="{{ isYt }}" onClick="{{ pickYt }}" style="min-height:44px;padding:0 20px;border:0;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;background:{{ ytTabBg }};color:{{ ytTabFg }};transition:background .3s">Vídeo do YouTube</button>
+              <button type="button" role="tab" aria-selected="{{ isImg }}" onClick="{{ pickImg }}" style="min-height:44px;padding:0 20px;border:0;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;background:{{ imgTabBg }};color:{{ imgTabFg }};transition:background .3s">Imagem</button>
+            </div>
+
+            <sc-if value="{{ isYt }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <input type="url" aria-label="Link do YouTube" value="{{ f.yt }}" onChange="{{ setYt }}" placeholder="https://www.youtube.com/watch?v=…" style="min-height:54px;padding:0 18px;border-radius:16px;border:1px solid {{ errYtBorder }};background:#F0F9FF;color:#1F2937;font-size:16px;outline:none">
+                <sc-if value="{{ errYt }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:14px;color:#B91C1C">Link do YouTube inválido.</span></sc-if>
+                <sc-if value="{{ ytThumb }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ ytThumb }}" alt="Pré-visualização do vídeo" style="width:100%;max-width:320px;aspect-ratio:16/9;object-fit:cover;border-radius:16px;border:1px solid rgba(96,165,250,0.3)">
+                </sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isImg }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <input type="file" accept="image/*" ref="{{ fileRef }}" onChange="{{ onFile }}" style="display:none">
+                <sc-if value="{{ noImg }}" hint-placeholder-val="{{ true }}">
+                  <button type="button" onClick="{{ pickFile }}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:150px;border-radius:20px;border:1px dashed rgba(59,130,246,0.6);background:#F0F9FF;color:#1F2937;cursor:pointer;transition:background .3s" style-hover="background:#e3f0fb">
+                    <span style="font-size:16px;font-weight:600;color:#3B82F6">Anexar imagem</span>
+                    <span style="font-size:14px">JPG ou PNG</span>
+                  </button>
+                </sc-if>
+                <sc-if value="{{ f.img }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:relative;align-self:flex-start">
+                    <img src="{{ f.img }}" alt="Imagem anexada" style="display:block;max-width:100%;max-height:240px;border-radius:16px;border:1px solid rgba(96,165,250,0.3)">
+                    <button type="button" onClick="{{ removeImg }}" style="position:absolute;top:10px;right:10px;min-height:36px;padding:0 14px;border:0;border-radius:999px;background:rgba(255,255,255,0.92);color:#1F2937;font-size:14px;font-weight:600;cursor:pointer">Remover</button>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+          </fieldset>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px;padding-top:8px">
+          <button type="button" onClick="{{ closeCreate }}" style="min-height:54px;padding:0 24px;border-radius:999px;border:1px solid rgba(96,165,250,0.5);background:transparent;color:#1F2937;font-size:16px;font-weight:600;cursor:pointer">Cancelar</button>
+          <button type="submit" style="min-height:54px;padding:0 30px;border:0;border-radius:999px;background:#3B82F6;color:#fff;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 10px 26px rgba(59,130,246,0.3);transition:transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)">Publicar</button>
+        </div>
+      </form>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ askPw }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(31,41,55,0.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)" onClick="{{ closePw }}">
+      <form role="dialog" aria-modal="true" aria-labelledby="pw-title" onSubmit="{{ confirmPw }}" onClick="{{ stop }}" style="width:100%;max-width:440px;display:flex;flex-direction:column;gap:28px;padding:clamp(28px,5vw,44px);border-radius:30px;background:#fff;border:1px solid #fff;box-shadow:0 30px 80px rgba(31,41,55,0.25)">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3B82F6">Confirmação</span>
+          <h2 id="pw-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:30px;letter-spacing:-0.015em">Digite a senha para publicar</h2>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:15px;font-weight:600">Senha</span>
+          <input type="password" autoFocus="{{ true }}" autoComplete="current-password" value="{{ pw }}" onChange="{{ setPw }}" style="min-height:54px;padding:0 18px;border-radius:16px;border:1px solid {{ pwBorder }};background:#F0F9FF;color:#1F2937;font-size:16px;outline:none">
+          <sc-if value="{{ pwErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:14px;color:#B91C1C">Senha incorreta.</span></sc-if>
+        </label>
+        <div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px">
+          <button type="button" onClick="{{ closePw }}" style="min-height:52px;padding:0 22px;border-radius:999px;border:1px solid rgba(96,165,250,0.5);background:transparent;color:#1F2937;font-size:16px;font-weight:600;cursor:pointer">Voltar</button>
+          <button type="submit" style="min-height:52px;padding:0 28px;border:0;border-radius:999px;background:#3B82F6;color:#fff;font-size:16px;font-weight:600;cursor:pointer">Confirmar e publicar</button>
+        </div>
+      </form>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ viewing }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:clamp(16px,5vh,56px) 16px;overflow-y:auto;background:rgba(31,41,55,0.32);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)" onClick="{{ closeView }}">
+      <article role="dialog" aria-modal="true" aria-labelledby="view-title" onClick="{{ stop }}" style="width:100%;max-width:820px;display:flex;flex-direction:column;border-radius:32px;overflow:hidden;background:rgba(255,255,255,0.96);border:1px solid #fff;box-shadow:0 30px 80px rgba(31,41,55,0.2)">
+        <sc-if value="{{ v.embed }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative;aspect-ratio:16/9;background:#1F2937">
+            <iframe title="{{ v.title }}" src="{{ v.embed }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+          </div>
+        </sc-if>
+        <sc-if value="{{ v.img }}" hint-placeholder-val="{{ false }}">
+          <img src="{{ v.img }}" alt="{{ v.title }}" style="display:block;width:100%;max-height:520px;object-fit:cover">
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:20px;padding:clamp(28px,5vw,52px)">
+          <time style="font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3B82F6">{{ v.dateLabel }}</time>
+          <h2 id="view-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,3.6vw,44px);line-height:1.12;letter-spacing:-0.02em;text-wrap:balance">{{ v.title }}</h2>
+          <p style="font-size:18px;line-height:1.75;white-space:pre-wrap;text-wrap:pretty">{{ v.desc }}</p>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;margin-top:8px;border-top:1px solid rgba(96,165,250,0.25)">
+            <button type="button" onClick="{{ deleteViewing }}" style="min-height:48px;padding:0 20px;border-radius:999px;border:1px solid rgba(185,28,28,0.35);background:transparent;color:#B91C1C;font-size:15px;font-weight:600;cursor:pointer">Excluir postagem</button>
+            <button type="button" onClick="{{ closeView }}" style="min-height:48px;padding:0 24px;border:0;border-radius:999px;background:#3B82F6;color:#fff;font-size:15px;font-weight:600;cursor:pointer">Fechar</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const KEY = 'drandre_blog_posts_v1';
+const PW = 'Andre16Pediatria!2026';
+const emptyForm = () => ({ title: '', desc: '', date: '', media: 'yt', yt: '', img: '' });
+function ytId(u) {
+  if (!u) return null;
+  const m = u.match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([\w-]{11})/);
+  return m ? m[1] : null;
+}
+function fmt(d) {
+  if (!d) return '';
+  const [y, m, dd] = d.split('-').map(Number);
+  return new Date(y, m - 1, dd).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, posts: [], creating: false, viewId: null, f: emptyForm(), tried: false };
+  fileRef = React.createRef();
+  componentDidMount() {
+    try { this.setState({ posts: JSON.parse(localStorage.getItem(KEY) || '[]') }); } catch (e) {}
+    this.onR = () => this.setState({ w: window.innerWidth });
+    this.onK = e => { if (e.key === 'Escape') this.setState(s => s.askPw ? { askPw: false, pw: '', pwErr: false } : { creating: false, viewId: null }); };
+    window.addEventListener('resize', this.onR);
+    window.addEventListener('keydown', this.onK);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); window.removeEventListener('keydown', this.onK); }
+  save(posts) {
+    this.setState({ posts });
+    try { localStorage.setItem(KEY, JSON.stringify(posts)); } catch (e) { alert('Não foi possível salvar: imagem muito grande.'); }
+  }
+  setF(k, v) { this.setState(s => ({ f: { ...s.f, [k]: v } })); }
+  onFile = e => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const r = new FileReader();
+    r.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const s = Math.min(1, 1400 / Math.max(img.width, img.height));
+        const c = document.createElement('canvas');
+        c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        this.setF('img', c.toDataURL('image/jpeg', 0.82));
+      };
+      img.src = r.result;
+    };
+    r.readAsDataURL(file);
+    e.target.value = '';
+  };
+  errors() {
+    const f = this.state.f;
+    return { title: !f.title.trim(), desc: !f.desc.trim(), date: !f.date, yt: f.media === 'yt' && f.yt.trim() !== '' && !ytId(f.yt) };
+  }
+  submit = e => {
+    e.preventDefault();
+    const er = this.errors();
+    if (er.title || er.desc || er.date || er.yt) { this.setState({ tried: true }); return; }
+    this.setState({ askPw: true, pw: '', pwErr: false });
+  };
+  confirmPw = e => {
+    e.preventDefault();
+    if (this.state.pw !== PW) { this.setState({ pwErr: true }); return; }
+    const f = this.state.f;
+    const post = { id: Date.now().toString(36), title: f.title.trim(), desc: f.desc.trim(), date: f.date,
+      yt: f.media === 'yt' ? ytId(f.yt) : null, img: f.media === 'img' ? f.img : '' };
+    this.save([post, ...this.state.posts]);
+    this.setState({ creating: false, askPw: false, pw: '', f: emptyForm(), tried: false });
+  };
+  renderVals() {
+    const { w, posts, f, tried, viewId } = this.state;
+    const er = this.errors();
+    const bd = bad => (tried && bad ? '#B91C1C' : 'rgba(96,165,250,0.35)');
+    const shape = p => ({
+      ...p, dateLabel: fmt(p.date), isVideo: !!p.yt,
+      thumb: p.yt ? `https://img.youtube.com/vi/${p.yt}/hqdefault.jpg` : (p.img || ''),
+      kind: p.yt ? 'Vídeo' : (p.img ? 'Imagem' : 'Texto'),
+      embed: p.yt ? `https://www.youtube.com/embed/${p.yt}` : '',
+      open: () => this.setState({ viewId: p.id })
+    });
+    const sorted = [...posts].sort((a, b) => (b.date || '').localeCompare(a.date || '')).map(shape);
+    const vp = posts.find(p => p.id === viewId);
+    const home = 'index.html';
+    const id = ytId(f.yt);
+    return {
+      showNav: w >= 1080,
+      nav: [
+        { label: 'Início', href: home }, { label: 'Sobre', href: home + '#sobre' },
+        { label: 'Atuação', href: home + '#atuacao' }, { label: 'Atendimento', href: home + '#atendimento' },
+        { label: 'Localização', href: home + '#localizacao' }, { label: 'Blog', href: 'blog.html', current: 'page', bg: 'rgba(96,165,250,0.16)' }
+      ].map(n => ({ current: undefined, bg: 'transparent', ...n })),
+      posts: sorted, hasPosts: sorted.length > 0, isEmpty: sorted.length === 0,
+      creating: this.state.creating,
+      openCreate: () => this.setState({ creating: true, f: emptyForm(), tried: false }),
+      closeCreate: () => this.setState({ creating: false }),
+      stop: e => e.stopPropagation(),
+      f, submit: this.submit,
+      setTitle: e => this.setF('title', e.target.value),
+      setDesc: e => this.setF('desc', e.target.value),
+      setDate: e => this.setF('date', e.target.value),
+      setYt: e => this.setF('yt', e.target.value),
+      isYt: f.media === 'yt', isImg: f.media === 'img',
+      pickYt: () => this.setF('media', 'yt'), pickImg: () => this.setF('media', 'img'),
+      ytTabBg: f.media === 'yt' ? '#3B82F6' : 'transparent', ytTabFg: f.media === 'yt' ? '#fff' : '#1F2937',
+      imgTabBg: f.media === 'img' ? '#3B82F6' : 'transparent', imgTabFg: f.media === 'img' ? '#fff' : '#1F2937',
+      ytThumb: id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '',
+      fileRef: this.fileRef, onFile: this.onFile,
+      pickFile: () => this.fileRef.current && this.fileRef.current.click(),
+      noImg: !f.img, removeImg: () => this.setF('img', ''),
+      errTitle: tried && er.title, errDesc: tried && er.desc, errDate: tried && er.date, errYt: tried && er.yt,
+      errTitleBorder: bd(er.title), errDescBorder: bd(er.desc), errDateBorder: bd(er.date), errYtBorder: bd(er.yt),
+      askPw: !!this.state.askPw, pw: this.state.pw || '', pwErr: !!this.state.pwErr,
+      pwBorder: this.state.pwErr ? '#B91C1C' : 'rgba(96,165,250,0.35)',
+      setPw: e => this.setState({ pw: e.target.value, pwErr: false }),
+      confirmPw: this.confirmPw,
+      closePw: () => this.setState({ askPw: false, pw: '', pwErr: false }),
+      viewing: !!vp, v: vp ? shape(vp) : {},
+      closeView: () => this.setState({ viewId: null }),
+      deleteViewing: () => { if (confirm('Excluir esta postagem?')) { this.save(posts.filter(p => p.id !== viewId)); this.setState({ viewId: null }); } }
+    };
+  }
+}
+</script>
+</body>
+</html>
