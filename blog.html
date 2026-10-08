@@ -356,7 +356,7 @@ class Component extends DCLogic {
       nav: [
         { label: 'Início', href: home }, { label: 'Sobre', href: home + '#sobre' },
         { label: 'Atuação', href: home + '#atuacao' }, { label: 'Atendimento', href: home + '#atendimento' },
-        { label: 'Localização', href: home + '#localizacao' }, { label: 'Blog', href: 'blog.html', current: 'page', bg: 'rgba(96,165,250,0.16)' }
+        { label: 'Blog', href: 'blog.html', current: 'page', bg: 'rgba(96,165,250,0.16)' }
       ].map(n => ({ current: undefined, bg: 'transparent', ...n })),
       posts: sorted, hasPosts: sorted.length > 0, isEmpty: sorted.length === 0,
       creating: this.state.creating,
